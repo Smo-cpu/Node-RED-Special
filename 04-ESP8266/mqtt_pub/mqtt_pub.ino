@@ -1,9 +1,9 @@
 #include <ESP8266WiFi.h>
 #include <PubSubClient.h>
 
-const char* SSID = "<SSID des eigenen WLAN>";
-const char* PASSWORD = "<Passwort des eigenen WLAN>";
-const char* MQTT_SERVER = "<IP-Adresse oder Namen des MQTT-Brokers>";
+const char* SSID = "honda";
+const char* PASSWORD = "hallovolk64";
+const char* MQTT_SERVER = "192.168.178.38";
 const char* MQTT_TOPIC = "home/MQTT-Test";
 const uint16_t MESSAGE_LEN = 50;
 
@@ -50,7 +50,7 @@ void loop() {
   mqttClient.loop();
 
   const uint32_t now = millis();
-  if (now - lastTimestamp > 2000) {
+  if (now - lastTimestamp > 5000) {
     char message[MESSAGE_LEN];
     lastTimestamp = now;
     snprintf(message, MESSAGE_LEN, "Nachricht #%ld", ++messageId);
